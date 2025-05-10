@@ -10,10 +10,11 @@ abstract class AbstractController {
     
         ob_start();
 
-        require __DIR__ . "/../views/components/" . $view . ".php";
-        $contents = ob_get_clean();
+        //choose components
+        // require __DIR__ . "/../views/components/" . $view . ".php";
+        // $contents = ob_get_clean();
 
-            
+        //inject that components
         require __DIR__ . '/../views/layout/main.view.php';
     }
 }
