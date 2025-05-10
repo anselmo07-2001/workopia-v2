@@ -1,7 +1,7 @@
 <?php
 
 try {
-    $pdo = new PDO('mysql:host=localhost:3307;dbname=cms;charset=utf8mb4', 'cms', '(c.KQSH8aBsrFbuh', [
+    $pdo = new PDO('mysql:host=localhost:3307;dbname=workopia;charset=utf8mb4', 'root', '', [
         PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
     ]);
 }
