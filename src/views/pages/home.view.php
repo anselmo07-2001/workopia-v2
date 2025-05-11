@@ -11,3 +11,7 @@
     </form>
   </div>
 </section>
+
+<?php require __DIR__ . "/../components/topBanner.view.php" ?>
+<?php require __DIR__ . "/../components/messageBox" ?>
+<?php require __DIR__ . "/../components/bottomBanner" ?>
