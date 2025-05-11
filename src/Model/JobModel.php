@@ -8,7 +8,7 @@ class JobModel {
     public string $title;
     public string $description;
     public string $salary;
-    public string $tag;
+    public string $tags;
     public string $company;
     public string $address;
     public string $city;
@@ -17,5 +17,5 @@ class JobModel {
     public string $email;
     public string $requirements;
     public string $benefits;
-    public string $created_at;
+    public string $created_at; 
 }

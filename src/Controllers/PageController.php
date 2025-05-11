@@ -14,8 +14,10 @@ class PageController extends AbstractController {
 
     public function showHomePage() {
         //create a repo function from the abtract function of pageController that will get the first 6 of the job list
-        $this->jobRepository->fetchAllJobList();
+        $jobs = $this->jobRepository->fetchAllJobList();
 
-        $this->render("home.view", []);
+        $this->render("home.view", [
+            "jobs" => $jobs,
+        ]);
     }
-}
+} 

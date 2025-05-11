@@ -15,4 +15,7 @@
 
 <?php require __DIR__ . "/../components/topBanner.view.php"; ?>
 <?php require __DIR__ . "/../components/messageBox.view.php"; ?>
+
+<?php var_dump($params); ?>
+
 <?php require __DIR__ . "/../components/bottomBanner.view.php"; ?>
