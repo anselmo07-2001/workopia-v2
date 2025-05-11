@@ -1,0 +1,1 @@
+<div class="text-center text-3xl my-4 font-bold border border-gray-300 p-3">Recent Jobs</div>

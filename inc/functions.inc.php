@@ -5,3 +5,11 @@ function e($value) {
 }
 
 
+function component_path(string $name, array $params = []): string {
+    extract($params); 
+    ob_start();
+
+    require __DIR__ . "/../../components/{$name}.view.php"; 
+    return ob_get_clean(); 
+}
+

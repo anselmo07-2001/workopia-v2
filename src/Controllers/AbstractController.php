@@ -5,8 +5,9 @@ namespace App\Controllers;
 
 abstract class AbstractController {
 
-    protected function render($view, $params) {      
+    protected function render(array $view, array $params) {      
         extract($params);
+        $components = [];
     
         ob_start();
 
