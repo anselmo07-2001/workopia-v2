@@ -5,17 +5,16 @@ namespace App\Controllers;
 
 abstract class AbstractController {
 
-    protected function render(array $view, array $params) {      
+    protected function render(string $view, array $params) {      
         extract($params);
-        $components = [];
     
         ob_start();
 
-        //choose components
-        // require __DIR__ . "/../views/components/" . $view . ".php";
-        // $contents = ob_get_clean();
+        //get pages
+        require __DIR__ . "/../views/pages/" . $view . ".php";
+        $contents = ob_get_clean();
 
-        //inject that components
+        //inject that page to layout
         require __DIR__ . '/../views/layout/main.view.php';
     }
 }

@@ -12,6 +12,7 @@
   </div>
 </section>
 
-<?php require __DIR__ . "/../components/topBanner.view.php" ?>
-<?php require __DIR__ . "/../components/messageBox" ?>
-<?php require __DIR__ . "/../components/bottomBanner" ?>
+
+<?php require __DIR__ . "/../components/topBanner.view.php"; ?>
+<?php require __DIR__ . "/../components/messageBox.view.php"; ?>
+<?php require __DIR__ . "/../components/bottomBanner.view.php"; ?>
