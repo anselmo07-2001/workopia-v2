@@ -2,9 +2,12 @@
 
 namespace App\Controllers;
 
+use App\Repository\JobRepository;
 
 abstract class AbstractController {
 
+    public function __construct(protected JobRepository $jobRepository){}
+ 
     protected function render(string $view, array $params) {      
         extract($params);
     

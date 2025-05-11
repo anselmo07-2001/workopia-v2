@@ -2,8 +2,15 @@
 
 namespace App\Repository;
 
+use PDO;
+
+//this class need the pdo and job model;
 class JobRepository {
-     public function fetchAllJobList() {
-        
+
+    public function __construct(private PDO $pdo) {}
+  
+
+    public function fetchAllJobList(){
+           var_dump("JobRepository::fetchAllJobList is triggered");
      }
 }

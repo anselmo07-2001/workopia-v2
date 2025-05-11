@@ -1,5 +1,7 @@
 <?php
 
+namespace App\Model;
+
 class JobModel {
     public int $id;
     public int $user_id;
