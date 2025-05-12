@@ -23,9 +23,16 @@ $container->bind("pageController", function() use($container) {
 });
 
 
-$pageController = $container->get("pageController");
-$pageController->showHomePage();
+// Manual Routing: index.php is the entry point for all request
+$requestUri = $_SERVER["REQUEST_URI"];
 
+// Remove the base path from the requestUri
+$basePath = "/Projects/Workopia/public";
+$path = str_replace($basePath, '', $requestUri);
+$path = trim($path, '/');
 
-
+if ($path === "") {
+    $pageController = $container->get("pageController");
+    $pageController->showHomePage();
+}
 
