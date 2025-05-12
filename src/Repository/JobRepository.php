@@ -23,4 +23,21 @@ class JobRepository {
             return null;
          }
      }
+
+
+     public function fetchJob(int $id): ?JobModel {
+         $stmt = $this->pdo->prepare("SELECT * FROM listings WHERE id = :id");
+         $stmt->bindValue(":id", $id, PDO::PARAM_INT);
+         $stmt->execute();
+         $stmt->setFetchMode(PDO::FETCH_CLASS, JobModel::class);
+         $jobs = $stmt->fetch();
+                
+         if (!empty($jobs)) {
+             return $jobs;
+         }
+         else {
+            return null;
+         }
+     }
 }
+

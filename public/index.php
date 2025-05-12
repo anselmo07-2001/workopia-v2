@@ -32,6 +32,8 @@ if ($path === "") {
     $pageController->showHomePage();
 }
 else if (preg_match('#^jobs/(\d+)$#', $path, $matches)) {
-    echo "Hi from show job view";
+    $jobId = $matches[1];
+    $pageController = $container->get("pageController");
+    $pageController->showJob($jobId);
 }
 

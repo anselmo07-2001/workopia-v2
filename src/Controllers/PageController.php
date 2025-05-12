@@ -20,4 +20,9 @@ class PageController extends AbstractController {
             "jobs" => $jobs,
         ]);
     }
+
+    public function showJob(int $id) {
+        $job = $this->jobRepository->fetchJob($id);
+        var_dump($job);
+    }
 } 
