@@ -24,15 +24,14 @@ $container->bind("pageController", function() use($container) {
 
 
 // Manual Routing: index.php is the entry point for all request
-$requestUri = $_SERVER["REQUEST_URI"];
+$path = isset($_GET['path']) ? $_GET['path'] : '';
 
-// Remove the base path from the requestUri
-$basePath = "/Projects/Workopia/public";
-$path = str_replace($basePath, '', $requestUri);
-$path = trim($path, '/');
 
 if ($path === "") {
     $pageController = $container->get("pageController");
     $pageController->showHomePage();
+}
+else if (preg_match('#^jobs/(\d+)$#', $path, $matches)) {
+    echo "Hi from show job view";
 }
 
