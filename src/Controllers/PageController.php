@@ -15,6 +15,7 @@ class PageController extends AbstractController {
 
         $this->render("home.view", [
             "jobs" => $jobs,
+            "displayText" => "Recent Jobs",
         ]);
     }
 
@@ -39,6 +40,7 @@ class PageController extends AbstractController {
 
         $this->render("showSearchJob.view", [
             "searchResult" => $searchResult,
+            "displayText" => "Search Results for: " . $keywords,
         ]);
     }
 } 

@@ -1,1 +1,1 @@
-<div class="text-center text-3xl my-3 font-bold border border-gray-300 p-3">Recent Jobs</div>
+<div class="text-center text-3xl my-3 font-bold border border-gray-300 p-3"><?php echo $displayText; ?></div>
