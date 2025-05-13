@@ -36,4 +36,11 @@ else if (preg_match('#^jobs/(\d+)$#', $path, $matches)) {
     $pageController = $container->get("pageController");
     $pageController->showJob($jobId);
 }
+else if ($path === "search") {
+    $keywords = $_GET["keywords"];
+    $location = $_GET["location"];
+
+    $pageController = $container->get("pageController"); 
+    $pageController->searchJobs($keywords, $location);
+}
 

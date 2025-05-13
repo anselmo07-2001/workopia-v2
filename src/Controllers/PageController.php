@@ -6,14 +6,11 @@ use App\Repository\JobRepository;
 
 class PageController extends AbstractController {
 
-    //create a constructor that will accept the Job Repository
     public function __construct(JobRepository $jobRepository){
          parent::__construct($jobRepository);
     } 
 
-
     public function showHomePage() {
-        //create a repo function from the abtract function of pageController that will get the first 6 of the job list
         $jobs = $this->jobRepository->fetchAllJobList();
 
         $this->render("home.view", [
@@ -26,6 +23,22 @@ class PageController extends AbstractController {
         
         $this->render("showJob.view", [
             "job" => $job,
+        ]);
+    }
+
+    public function searchJobs(string $keywords, string $location) {
+        $keywords = trim($keywords ?? '');
+        $location = trim($location ?? '');
+
+        if ($keywords === '' && $location === '') {
+            header("Location: index.php");
+            exit;
+        }
+    
+        $searchResult = $this->jobRepository->fetchSearchJobs($keywords, $location);
+
+        $this->render("showSearchJob.view", [
+            "searchResult" => $searchResult,
         ]);
     }
 } 
