@@ -15,7 +15,7 @@
 <header class="bg-blue-900 text-white p-4">
   <div class="container mx-auto flex justify-between items-center">
     <h1 class="text-3xl font-semibold">
-      <a href="/">Workopia</a>
+      <a href="/Projects/Workopia/public/index.php">Workopia</a>
     </h1>
     <nav class="space-x-4">
         <a href="/Projects/Workopia/public/index.php?path=auth/login" class="text-white hover:underline">Login</a>
