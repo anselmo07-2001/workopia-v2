@@ -55,7 +55,7 @@ class JobRepository {
              return $searchResult;
          }
          else {
-            return null;
+            return [];
          }
      }
 }

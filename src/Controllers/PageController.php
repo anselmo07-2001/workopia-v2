@@ -38,9 +38,11 @@ class PageController extends AbstractController {
     
         $searchResult = $this->jobRepository->fetchSearchJobs($keywords, $location);
 
+        $displayText = empty($searchResult) ? "No Job Available" : "Search Results for: " . $keywords;
+
         $this->render("showSearchJob.view", [
             "searchResult" => $searchResult,
-            "displayText" => "Search Results for: " . $keywords,
+            "displayText" => $displayText,
         ]);
     }
 } 
