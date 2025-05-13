@@ -29,7 +29,7 @@
 
       <p class="mt-4 text-gray-500">
         Already have an account?
-        <a class="text-blue-900" href="/auth/login">Login</a>
+        <a class="text-blue-900" href="/Projects/Workopia/public/index.php?path=auth/login">Login</a>
       </p>
     </form>
   </div>
