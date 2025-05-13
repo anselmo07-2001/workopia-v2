@@ -18,8 +18,8 @@
       <a href="/">Workopia</a>
     </h1>
     <nav class="space-x-4">
-        <a href="/auth/login" class="text-white hover:underline">Login</a>
-        <a href="/auth/register" class="text-white hover:underline">Register</a>
+        <a href="/Projects/Workopia/public/index.php?path=auth/login" class="text-white hover:underline">Login</a>
+        <a href="/Projects/Workopia/public/index.php?path=auth/register" class="text-white hover:underline">Register</a>
     </nav>
   </div>
 </header>

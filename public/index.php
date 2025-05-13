@@ -43,4 +43,11 @@ else if ($path === "search") {
     $pageController = $container->get("pageController"); 
     $pageController->searchJobs($keywords, $location);
 }
-
+else if ($path === "auth/register") {
+    $pageController = $container->get("pageController");
+    $pageController->showRegisterPage();
+}
+else if ($path === "auth/login") {
+    $pageController = $container->get("pageController");
+    $pageController->showLoginPage();
+}  
