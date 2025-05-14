@@ -2,12 +2,15 @@
 
 namespace App\Controllers;
 
+use App\Repository\UserRepository;
 use App\Support\Validation;
 
 
 
 class AuthController {
 
+    public function __construct(protected UserRepository $userRepository){}
+   
     public function showRegisterPage() {
         $this->render("register.view", []);
     }
@@ -43,7 +46,36 @@ class AuthController {
             $this->render("register.view", [
                 "errors" => $errors
             ]);
+            exit;
         }
+
+        //Check if the user input email is exist in the DB
+        $user = $this->userRepository->findByEmail($email);
+
+        if (!empty($user)) {
+            $errors["email"] = "Email already taken";
+
+            $this->render("register.view", [
+                "errors" => $errors
+            ]);
+            exit;
+        }
+
+
+        $formData = [
+            'name' => $name,
+            'email' => $email,
+            'city' => $city,
+            'state' => $state,
+            'password' => password_hash($password, PASSWORD_DEFAULT),
+            'created_at' => date('Y-m-d H:i:s'),
+        ];
+
+
+        //store formData to DB
+        $this->userRepository->registerAccount($formData);
+
+        header("Location: index.php");
     }
 
 

@@ -16,15 +16,25 @@ $container->bind("jobRepository", function() use($container) {
     return new App\Repository\JobRepository($pdo);
 });
 
+
+//setup the user repository
+$container->bind("userRepository", function() use($container) {
+    $pdo = $container->get("pdo");
+    return new App\Repository\UserRepository($pdo);
+});
+
+
 //setup the pageController
 $container->bind("pageController", function() use($container) {
      $jobRepository = $container->get("jobRepository");
      return new \App\Controllers\PageController($jobRepository);
 });
 
+
 //setup the authController
-$container->bind("authController", function() {
-    return new \App\Controllers\AuthController();
+$container->bind("authController", function() use($container) {
+    $userRepository = $container->get("userRepository");
+    return new \App\Controllers\AuthController($userRepository);
 });
 
 
