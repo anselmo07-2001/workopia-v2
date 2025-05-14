@@ -47,11 +47,11 @@ class PageController extends AbstractController {
     }
 
 
-    public function showLoginPage() {
-        $this->render("login.view", []);
-    }
+    // public function showLoginPage() {
+    //     $this->render("login.view", []);
+    // }
 
-     public function showRegisterPage() {
-        $this->render("register.view", []);
-    }
+    //  public function showRegisterPage() {
+    //     $this->render("register.view", []);
+    // }
 } 

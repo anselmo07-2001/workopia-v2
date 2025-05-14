@@ -22,6 +22,12 @@ $container->bind("pageController", function() use($container) {
      return new \App\Controllers\PageController($jobRepository);
 });
 
+//setup the authController
+$container->bind("authController", function() {
+    return new \App\Controllers\AuthController();
+});
+
+
 
 // Manual Routing: index.php is the entry point for all request
 $path = isset($_GET['path']) ? $_GET['path'] : '';
@@ -44,10 +50,19 @@ else if ($path === "search") {
     $pageController->searchJobs($keywords, $location);
 }
 else if ($path === "auth/register") {
-    $pageController = $container->get("pageController");
-    $pageController->showRegisterPage();
+    $authController = $container->get("authController");
+
+    if ($_SERVER["REQUEST_METHOD"] === "GET") {  
+        $authController->showRegisterPage();
+    }
+
+
+    if ($_SERVER["REQUEST_METHOD"] === "POST") {
+        $authController->handleRegister();
+    }
+  
 }
 else if ($path === "auth/login") {
-    $pageController = $container->get("pageController");
-    $pageController->showLoginPage();
+    // $pageController = $container->get("pageController");
+    // $pageController->showLoginPage();
 }  
