@@ -23,6 +23,7 @@ class SessionService {
 
 
     public static function removeAllSessionData() {
+        self::startSessionIfNotStarted();
         session_unset();
         session_destroy();
     }
