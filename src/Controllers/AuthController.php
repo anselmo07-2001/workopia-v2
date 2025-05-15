@@ -4,8 +4,7 @@ namespace App\Controllers;
 
 use App\Repository\UserRepository;
 use App\Support\Validation;
-
-
+use App\Support\SessionService;
 
 class AuthController {
 
@@ -73,7 +72,17 @@ class AuthController {
 
 
         //store formData to DB
-        $this->userRepository->registerAccount($formData);
+        $userId = $this->userRepository->registerAccount($formData);
+        
+
+        SessionService::setSessionValue("user", [
+            "userId" => $userId,
+            'name' => $name,
+            'email' => $email,
+            'city' => $city,
+            'state' => $state,
+        ]);
+
 
         header("Location: index.php");
     }

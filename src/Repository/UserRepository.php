@@ -34,6 +34,13 @@ class UserRepository {
         $stmt->bindValue(":password", $formData["password"]);
         $stmt->bindValue(":created_at", $formData["created_at"]);
 
-        return $stmt->execute();
+        $success = $stmt->execute();
+
+        if ($success) {
+            return $this->pdo->lastInsertId();
+        }
+        else {
+            return false;
+        }
    }
 }

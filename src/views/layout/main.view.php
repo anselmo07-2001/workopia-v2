@@ -1,3 +1,5 @@
+<?php use App\Support\SessionService; ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -18,8 +20,20 @@
       <a href="/Projects/Workopia/public/index.php">Workopia</a>
     </h1>
     <nav class="space-x-4">
-        <a href="/Projects/Workopia/public/index.php?path=auth/login" class="text-white hover:underline">Login</a>
-        <a href="/Projects/Workopia/public/index.php?path=auth/register" class="text-white hover:underline">Register</a>
+        <?php $user = SessionService::getSessionKey("user"); ?>
+        <?php if ($user): ?>
+            <div class="flex justify-between items-center gap-4">
+                <div class="text-white-500">
+                    Welcome <?php echo $user["name"]; ?>
+                </div>
+                <form method="POST" action="/auth/logout">
+                    <button type="submit" class="text-white inline hover:underline">Logout</button>
+                </form>
+            </div>
+        <?php else: ?>
+            <a href="/Projects/Workopia/public/index.php?path=auth/login" class="text-white hover:underline">Login</a>
+            <a href="/Projects/Workopia/public/index.php?path=auth/register" class="text-white hover:underline">Register</a>
+        <?php endif; ?>
     </nav>
   </div>
 </header>

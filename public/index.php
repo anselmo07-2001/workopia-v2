@@ -1,9 +1,11 @@
 <?php
 
+use App\Support\SessionService;
+
 require "../inc/all.inc.php";
 
 $container = new \App\Support\Container();
-// $pageController = new \App\Controllers\PageController();
+
 
 //setup db connection
 $container->bind("pdo", function() {
@@ -41,6 +43,7 @@ $container->bind("authController", function() use($container) {
 
 // Manual Routing: index.php is the entry point for all request
 $path = isset($_GET['path']) ? $_GET['path'] : '';
+SessionService::startSessionIfNotStarted();
 
 
 if ($path === "") {
