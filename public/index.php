@@ -12,6 +12,13 @@ $container->bind("pdo", function() {
     return require __DIR__ . "/../inc/db-connect.inc.php";
 });
 
+$container->bind("authService", function() use($container) {
+    $pdo = $container->get("pdo");
+    return new App\Support\AuthService($pdo);
+});
+
+
+
 //setup the job repository
 $container->bind("jobRepository", function() use($container) {
     $pdo = $container->get("pdo");
@@ -26,6 +33,9 @@ $container->bind("userRepository", function() use($container) {
 });
 
 
+
+
+
 //setup the pageController
 $container->bind("pageController", function() use($container) {
      $jobRepository = $container->get("jobRepository");
@@ -36,7 +46,8 @@ $container->bind("pageController", function() use($container) {
 //setup the authController
 $container->bind("authController", function() use($container) {
     $userRepository = $container->get("userRepository");
-    return new \App\Controllers\AuthController($userRepository);
+    $authService = $container->get("authService");
+    return new \App\Controllers\AuthController($userRepository, $authService);
 });
 
 
@@ -78,4 +89,8 @@ else if ($path === "auth/register") {
 else if ($path === "auth/login") {
     // $pageController = $container->get("pageController");
     // $pageController->showLoginPage();
+}
+else if ($path === "auth/logout") {  
+    $authController = $container->get("authController");
+    $authController->logout();
 }  

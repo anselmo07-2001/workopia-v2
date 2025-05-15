@@ -3,16 +3,26 @@
 namespace App\Controllers;
 
 use App\Repository\UserRepository;
+use App\Support\AuthService;
 use App\Support\Validation;
 use App\Support\SessionService;
 
 class AuthController {
 
-    public function __construct(protected UserRepository $userRepository){}
+    public function __construct(
+        protected UserRepository $userRepository,
+        protected AuthService $authService
+    ){}
    
     public function showRegisterPage() {
         $this->render("register.view", []);
     }
+
+    public function logout() {
+        $this->authService->handlelogout();
+        header("Location: index.php");
+    }
+
 
     public function handleRegister() {
         $name = $_POST["name"] ?? "";

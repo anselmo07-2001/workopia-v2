@@ -20,4 +20,10 @@ class SessionService {
     {
         return $_SESSION[$key] ?? $default;
     }
+
+
+    public static function removeAllSessionData() {
+        session_unset();
+        session_destroy();
+    }
 }
