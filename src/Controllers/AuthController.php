@@ -11,7 +11,6 @@ class AuthController {
 
     public function __construct(
         protected UserRepository $userRepository,
-        protected AuthService $authService
     ){}
    
     public function showRegisterPage() {
@@ -24,7 +23,7 @@ class AuthController {
 
 
     public function logout() {
-        $this->authService->handlelogout();
+        SessionService::removeAllSessionData();    
         header("Location: index.php");
     }
 

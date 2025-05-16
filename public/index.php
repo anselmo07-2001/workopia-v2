@@ -12,13 +12,6 @@ $container->bind("pdo", function() {
     return require __DIR__ . "/../inc/db-connect.inc.php";
 });
 
-$container->bind("authService", function() use($container) {
-    $pdo = $container->get("pdo");
-    return new App\Support\AuthService($pdo);
-});
-
-
-
 //setup the job repository
 $container->bind("jobRepository", function() use($container) {
     $pdo = $container->get("pdo");
@@ -46,8 +39,7 @@ $container->bind("pageController", function() use($container) {
 //setup the authController
 $container->bind("authController", function() use($container) {
     $userRepository = $container->get("userRepository");
-    $authService = $container->get("authService");
-    return new \App\Controllers\AuthController($userRepository, $authService);
+    return new \App\Controllers\AuthController($userRepository);
 });
 
 
