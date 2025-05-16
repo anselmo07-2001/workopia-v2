@@ -4,6 +4,7 @@ namespace App\Repository;
 
 use PDO;
 use App\Model\JobModel;
+use App\Support\Validation;
 
 //this class need the pdo and job model;
 class JobRepository {
@@ -58,5 +59,37 @@ class JobRepository {
             return [];
          }
      }
+
+     public function createJob() {
+        $allowedFields = ['title', 'description', 'salary', 'tags', 'company', 'address', 'city', 'state', 'phone', 'email', 'requirements', 'benefits'];
+        $allowedFields = array_flip($allowedFields);
+        $filteredFields  = array_intersect_key($_POST, $allowedFields); //only selected fields will be submit
+
+        //get the userId and insert it into the $sanitizeFields
+        
+        $sanitizeFields = array_map("sanitize", $filteredFields);
+
+        $requiredFields = ['title', 'description', 'salary', 'email', 'city', 'state'];
+        
+        $errors = [];
+
+        foreach($requiredFields as $fields) {
+            if (empty($sanitizeFields[$fields]) || !Validation::string($filteredFields[$fields])) {
+                $errors[$fields] = ucfirst($fields) . " is required";
+            }
+        }
+
+        if (!empty($errors)) {
+            return [
+                "error" => $errors,
+            ];
+        }
+
+
+        //submit the data
+        
+
+        
+     } 
 }
 

@@ -13,3 +13,9 @@ function component_path(string $name, array $params = []): string {
     return ob_get_clean(); 
 }
 
+
+function sanitize($dirty)
+{
+    return filter_var(trim($dirty), FILTER_SANITIZE_SPECIAL_CHARS);
+}
+

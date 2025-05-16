@@ -50,6 +50,17 @@ class PageController extends AbstractController {
          $this->render("createJobForm.view", []);
     }
 
+    public function handleJobCreation() {
+        $result = $this->jobRepository->createJob();
+
+        if (isset($result["error"])) {
+            $this->render("createJobForm.view", [
+                "errors" => $result["error"],
+            ]);
+            exit;
+        }
+    }
+
 
     // public function showLoginPage() {
     //     $this->render("login.view", []);

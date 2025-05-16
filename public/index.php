@@ -59,6 +59,11 @@ else if ($path === "create") {
     if ($_SERVER["REQUEST_METHOD"] === "GET") {  
         $pageController->showCreateJobForm();
     }
+
+    if ($_SERVER["REQUEST_METHOD"] === "POST") {  
+        $pageController->handleJobCreation();
+    }
+
 } 
 else if (preg_match('#^jobs/(\d+)$#', $path, $matches)) {
     $jobId = $matches[1];
