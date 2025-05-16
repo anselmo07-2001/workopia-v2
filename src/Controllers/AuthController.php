@@ -47,7 +47,40 @@ class AuthController {
             $this->render("login.view", [
                 "errors" => $errors,
             ]);
+            exit;
         }
+
+
+        $user = $this->userRepository->findByEmail($email);
+
+        if (empty($user)) {
+             $errors[] = "Invalid Credentials";
+
+             $this->render("login.view", [
+                "errors" => $errors,
+             ]);
+             exit;
+        }
+
+       if (!password_verify($password, $user->password)) {
+             $errors[] = "Invalid Credentials";
+
+             $this->render("login.view", [
+                "errors" => $errors,
+             ]);
+             exit;
+       }
+ 
+        SessionService::setSessionValue("user", [
+            "userId" => $user->id,
+            'name' => $user->name,
+            'email' => $user->email,
+            'city' => $user->city,
+            'state' => $user->state,
+        ]);
+
+        header("Location: index.php");
+
     }
 
 
