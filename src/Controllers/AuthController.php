@@ -18,9 +18,36 @@ class AuthController {
         $this->render("register.view", []);
     }
 
+    public function showLoginPage() {
+        $this->render("login.view", []);
+    }
+
+
     public function logout() {
         $this->authService->handlelogout();
         header("Location: index.php");
+    }
+
+
+    public function handleLogin() {
+        $email = $_POST["email"] ?? "";
+        $password = $_POST["password"] ?? "";
+
+        $errors = [];
+
+        if (!Validation::email($email)) {
+            $errors[] = "Please enter a valid email";
+        }
+
+        if (!Validation::string($password, 6, 50)) {
+            $errors['password'] = 'Password must be at least 6 characters';
+        }
+
+        if (!empty($errors)) {
+            $this->render("login.view", [
+                "errors" => $errors,
+            ]);
+        }
     }
 
 

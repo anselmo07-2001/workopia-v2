@@ -87,8 +87,17 @@ else if ($path === "auth/register") {
   
 }
 else if ($path === "auth/login") {
-    // $pageController = $container->get("pageController");
-    // $pageController->showLoginPage();
+    $authController = $container->get("authController"); 
+
+
+    if ($_SERVER["REQUEST_METHOD"] === "GET") {  
+        $authController->showLoginPage();
+    }
+
+    if ($_SERVER["REQUEST_METHOD"] === "POST") {
+        $authController->handleLogin();
+    }
+
 }
 else if ($path === "auth/logout") {  
     $authController = $container->get("authController");
