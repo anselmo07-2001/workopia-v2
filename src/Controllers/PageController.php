@@ -46,6 +46,10 @@ class PageController extends AbstractController {
         ]);
     }
 
+    public function showCreateJobForm() {
+         $this->render("createJobForm.view", []);
+    }
+
 
     // public function showLoginPage() {
     //     $this->render("login.view", []);
