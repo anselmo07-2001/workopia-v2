@@ -61,7 +61,32 @@ class JobRepository {
      }
 
      public function createJob(array $formData) {
-         var_dump($formData);
+        var_dump($formData);
+    //     $stmt = $this->pdo->prepare("INSERT INTO `listings` (title, description, salary, requirements, benefits, tags, company, address, city, state, phone, email) VALUES (:title, :description, :salary, :requirements, :benefits, :tags, :company, :address, :city, :state, :phone, :email)");
+
+
+    //     $stmt->bindValue(":title", $formData["title"]);
+    //     $stmt->bindValue(":description", $formData["description"]);
+    //     $stmt->bindValue(":salary", $formData["salary"]);
+    //     $stmt->bindValue(":requirements", $formData["requirements"]);
+    //     $stmt->bindValue(":benefits", $formData["benefits"]);
+    //     $stmt->bindValue(":tags", $formData["tags"]); 
+    //     $stmt->bindValue(":company", $formData["company"]); 
+    //     $stmt->bindValue(":address", $formData["address"]); 
+    //     $stmt->bindValue(":city", $formData["city"]); 
+    //     $stmt->bindValue(":state", $formData["state"]); 
+    //     $stmt->bindValue(":phone", $formData["phone"]); 
+    //     $stmt->bindValue(":email", $formData["email"]); 
+
+    //     $success = $stmt->execute();
+
+    //     if ($success) {
+    //         //TODO SET FLASH
+    //         return $success;
+    //     }
+    //     else {
+    //         return false;
+    //     }
      } 
 }
 

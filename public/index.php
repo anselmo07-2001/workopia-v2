@@ -55,14 +55,23 @@ if ($path === "") {
 }
 else if ($path === "create") {
     $pageController = $container->get("pageController");
+    $authController = $container->get("authController");
 
-    if ($_SERVER["REQUEST_METHOD"] === "GET") {  
-        $pageController->showCreateJobForm();
+    if (SessionService::getSessionKey("user")) {
+
+        if ($_SERVER["REQUEST_METHOD"] === "GET") {  
+            $pageController->showCreateJobForm();
+        }
+
+        if ($_SERVER["REQUEST_METHOD"] === "POST") {  
+             $pageController->handleJobCreation();
+        }
+    }
+    else {
+        $authController->showLoginPage();
     }
 
-    if ($_SERVER["REQUEST_METHOD"] === "POST") {  
-        $pageController->handleJobCreation();
-    }
+   
 
 } 
 else if (preg_match('#^jobs/(\d+)$#', $path, $matches)) {

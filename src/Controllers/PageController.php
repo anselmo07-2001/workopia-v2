@@ -78,6 +78,7 @@ class PageController extends AbstractController {
         }
 
         $this->jobRepository->createJob($sanitizeFields);
+
     }
 
 
