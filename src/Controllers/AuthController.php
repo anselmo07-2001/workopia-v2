@@ -13,15 +13,6 @@ class AuthController {
         protected UserRepository $userRepository,
     ){}
    
-    public function showRegisterPage() {
-        $this->render("register.view", []);
-    }
-
-    public function showLoginPage() {
-        $this->render("login.view", []);
-    }
-
-
     public function logout() {
         SessionService::removeAllSessionData();    
         header("Location: index.php");

@@ -55,7 +55,6 @@ if ($path === "") {
 }
 else if ($path === "create") {
     $pageController = $container->get("pageController");
-    $authController = $container->get("authController");
 
     if (SessionService::getSessionKey("user")) {
 
@@ -68,7 +67,7 @@ else if ($path === "create") {
         }
     }
     else {
-        $authController->showLoginPage();
+         $pageController->showLoginPage();
     }
 
    
@@ -88,9 +87,10 @@ else if ($path === "search") {
 }
 else if ($path === "auth/register") {
     $authController = $container->get("authController");
+    $pageController = $container->get("pageController");
 
     if ($_SERVER["REQUEST_METHOD"] === "GET") {  
-        $authController->showRegisterPage();
+        $pageController->showRegisterPage();
     }
 
 
@@ -101,10 +101,11 @@ else if ($path === "auth/register") {
 }
 else if ($path === "auth/login") {
     $authController = $container->get("authController"); 
+    $pageController = $container->get("pageController");
 
 
     if ($_SERVER["REQUEST_METHOD"] === "GET") {  
-        $authController->showLoginPage();
+        $pageController->showLoginPage();
     }
 
     if ($_SERVER["REQUEST_METHOD"] === "POST") {
