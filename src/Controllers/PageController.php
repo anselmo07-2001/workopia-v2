@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Repository\JobRepository;
+use App\Support\SessionService;
 use App\Support\Validation;
 
 class PageController extends AbstractController {
@@ -56,9 +57,8 @@ class PageController extends AbstractController {
         $allowedFields = array_flip($allowedFields);
         $filteredFields  = array_intersect_key($_POST, $allowedFields); //only selected fields will be submit
 
-        //get the userId and insert it into the $sanitizeFields
-        
         $sanitizeFields = array_map("sanitize", $filteredFields);
+        $sanitizeFields["user_id"] = SessionService::getSessionKey("user")["userId"];
 
         $requiredFields = ['title', 'description', 'salary', 'email', 'city', 'state'];
         
@@ -76,9 +76,8 @@ class PageController extends AbstractController {
             ]);
             exit;
         }
-
-        $this->jobRepository->createJob($sanitizeFields);
-
+   
+        $this->jobRepository->createJob($sanitizeFields);  
     }
 
 
