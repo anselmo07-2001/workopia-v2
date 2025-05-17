@@ -12,6 +12,15 @@ class PageController extends AbstractController {
          parent::__construct($jobRepository);
     } 
 
+    public function showRegisterPage() {
+        $this->render("register.view", []);
+    }
+
+    public function showLoginPage() {
+        $this->render("login.view", []);
+    }
+
+
     public function showHomePage() {
         $jobs = $this->jobRepository->fetchAllJobList();
 
@@ -90,12 +99,10 @@ class PageController extends AbstractController {
     }
 
 
-    public function showRegisterPage() {
-        $this->render("register.view", []);
+    public function handleJobDeletion($jobId) {
+        $this->jobRepository->deleteJob($jobId);
+        SessionService::setAlertMessage("success_message", "Job deleted successfully");
+        header("Location: index.php");
     }
-
-    public function showLoginPage() {
-        $this->render("login.view", []);
-    }
-
+   
 } 

@@ -69,10 +69,12 @@ else if ($path === "create") {
     else {
          $pageController->showLoginPage();
     }
-
-   
-
 } 
+else if (preg_match('#^delete/(\d+)$#', $path, $matches)) {
+    $jobId = $matches[1];
+    $pageController = $container->get("pageController");
+    $pageController->handleJobDeletion($jobId);
+}
 else if (preg_match('#^jobs/(\d+)$#', $path, $matches)) {
     $jobId = $matches[1];
     $pageController = $container->get("pageController");

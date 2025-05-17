@@ -4,6 +4,7 @@ namespace App\Repository;
 
 use PDO;
 use App\Model\JobModel;
+use App\Support\SessionService;
 use App\Support\Validation;
 
 //this class need the pdo and job model;
@@ -79,5 +80,12 @@ class JobRepository {
 
         return $stmt->execute();      
      } 
+
+
+     public function deleteJob(int $jobId) {
+        $stmt = $this->pdo->prepare("DELETE from `listings` WHERE `id` = :id");
+        $stmt->bindValue(":id", $jobId);
+        return $stmt->execute();
+     }
 }
 
