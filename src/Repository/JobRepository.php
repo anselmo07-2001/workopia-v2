@@ -87,5 +87,9 @@ class JobRepository {
         $stmt->bindValue(":id", $jobId);
         return $stmt->execute();
      }
+
+     public function editJob(int $jobId) {
+        echo "edit job" , $jobId;
+     }
 }
 

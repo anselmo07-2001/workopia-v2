@@ -112,5 +112,10 @@ class PageController extends AbstractController {
         SessionService::setAlertMessage("success_message", "Job deleted successfully");
         header("Location: index.php");
     }
+
+
+    public function handleJobModification($jobId) {
+        $this->jobRepository->editJob($jobId);
+    }
    
 } 

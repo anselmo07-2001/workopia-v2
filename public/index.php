@@ -75,7 +75,11 @@ else if (preg_match('#^edit/(\d+)$#', $path, $matches)) {
     $jobId = $matches[1];
 
     if ( $_SERVER["REQUEST_METHOD"] === "GET") {  
-            $pageController->showEditJobForm($jobId);
+         $pageController->showEditJobForm($jobId);
+    }
+
+    if ( $_SERVER["REQUEST_METHOD"] === "POST") {  
+         $pageController->handleJobModification($jobId);
     }
 }
 else if (preg_match('#^delete/(\d+)$#', $path, $matches)) {
