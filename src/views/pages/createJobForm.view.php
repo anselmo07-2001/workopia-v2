@@ -15,7 +15,7 @@
         <textarea name="description" placeholder="Job Description" class="w-full px-4 py-2 border rounded focus:outline-none"><?php echo $_POST["description"] ?? ""; ?></textarea>
       </div>
       <div class="mb-4">
-        <input type="text" name="salary" placeholder="Annual Salary" class="w-full px-4 py-2 border rounded focus:outline-none" value="<?php echo $_POST["salary"] ?? ""; ?>" />
+        <input type="number" name="salary" placeholder="Annual Salary" class="w-full px-4 py-2 border rounded focus:outline-none" value="<?php echo $_POST["salary"] ?? ""; ?>" />
       </div>
       <div class="mb-4">
         <input type="text" name="requirements" placeholder="Requirements" class="w-full px-4 py-2 border rounded focus:outline-none" value="<?php echo $_POST["requirements"] ?? ""; ?>" />
@@ -42,7 +42,7 @@
         <input type="text" name="state" placeholder="State" class="w-full px-4 py-2 border rounded focus:outline-none" value="<?php echo $_POST["state"] ?? ""; ?>" />
       </div>
       <div class="mb-4">
-        <input type="text" name="phone" placeholder="Phone" class="w-full px-4 py-2 border rounded focus:outline-none" value="<?php echo $_POST["phone"] ?? ""; ?>" />
+        <input type="number" name="phone" placeholder="Phone" class="w-full px-4 py-2 border rounded focus:outline-none" value="<?php echo $_POST["phone"] ?? ""; ?>" />
       </div>
       <div class="mb-4">
         <input type="email" name="email" placeholder="Email Address For Applications" class="w-full px-4 py-2 border rounded focus:outline-none" value="<?php echo $_POST["email"] ?? ""; ?>" />
