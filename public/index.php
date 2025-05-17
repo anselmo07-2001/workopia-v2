@@ -70,6 +70,13 @@ else if ($path === "create") {
          $pageController->showLoginPage();
     }
 } 
+else if (preg_match('#^edit/(\d+)$#', $path, $matches)) {
+    $pageController = $container->get("pageController");
+
+    if ( $_SERVER["REQUEST_METHOD"] === "GET") {  
+            $pageController->showEditJobForm();
+    }
+}
 else if (preg_match('#^delete/(\d+)$#', $path, $matches)) {
     $jobId = $matches[1];
     $pageController = $container->get("pageController");

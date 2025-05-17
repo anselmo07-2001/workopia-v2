@@ -20,6 +20,10 @@ class PageController extends AbstractController {
         $this->render("login.view", []);
     }
 
+    public function showEditJobForm() {
+        $this->render("editJobForm.view", []);
+    }
+
 
     public function showHomePage() {
         $jobs = $this->jobRepository->fetchAllJobList();
