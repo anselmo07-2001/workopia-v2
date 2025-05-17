@@ -72,9 +72,10 @@ else if ($path === "create") {
 } 
 else if (preg_match('#^edit/(\d+)$#', $path, $matches)) {
     $pageController = $container->get("pageController");
+    $jobId = $matches[1];
 
     if ( $_SERVER["REQUEST_METHOD"] === "GET") {  
-            $pageController->showEditJobForm();
+            $pageController->showEditJobForm($jobId);
     }
 }
 else if (preg_match('#^delete/(\d+)$#', $path, $matches)) {
