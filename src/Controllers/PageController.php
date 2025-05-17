@@ -77,7 +77,16 @@ class PageController extends AbstractController {
             exit;
         }
    
-        $this->jobRepository->createJob($sanitizeFields);  
+        $success = $this->jobRepository->createJob($sanitizeFields);  
+
+        if ($success) {
+            SessionService::setAlertMessage("success_message", "Job post created succesfully");
+        }
+        else {
+            SessionService::setAlertMessage("error_message", "Job post failed to created");
+        }
+
+        header("Location: index.php");
     }
 
 

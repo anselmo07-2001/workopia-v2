@@ -29,4 +29,21 @@ class SessionService {
         session_unset();
         session_destroy();
     }
+
+
+
+    public static function setAlertMessage(string $status, string $message) {
+        self::startSessionIfNotStarted();
+        $_SESSION[$status] = $message;
+    }
+
+    public static function getAlertMessage(string $status) {
+        $message = self::getSessionKey($status);
+        
+        if (isset($_SESSION[$status])) {
+            unset($_SESSION[$status]);
+        }
+
+        return $message;
+    }
 }

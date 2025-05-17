@@ -17,6 +17,7 @@
 <?php require __DIR__ . "/../components/topBanner.view.php"; ?>
 <div class="container mx-auto p-4 mt-4">
     <?php require __DIR__ . "/../components/messageBox.view.php"; ?>
+    <?php require __DIR__ . "/../components/alertMessage.view.php"; ?>
 
     <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
         <?php foreach($jobs AS $job):?>
