@@ -115,7 +115,29 @@ class PageController extends AbstractController {
 
 
     public function handleJobModification($jobId) {
-        $this->jobRepository->editJob($jobId);
+        $job = $this->jobRepository->fetchJob($jobId);
+        $allowedFields = ['title', 'description', 'salary', 'tags', 'company', 'address', 'city', 'state', 'phone', 'email', 'requirements', 'benefits'];
+        $allowedFields = array_flip($allowedFields);
+        $filteredFields  = array_intersect_key($_POST, $allowedFields); //only selected fields will be submit
+
+        $sanitizeFields = array_map("sanitize", $filteredFields);
+    
+        $requiredFields = ['title', 'description', 'salary', 'email', 'city', 'state'];
+        
+        $errors = [];
+
+        foreach($requiredFields as $fields) {
+            if (empty($sanitizeFields[$fields]) || !Validation::string($filteredFields[$fields])) {
+                $errors[$fields] = ucfirst($fields) . " is required";
+            }
+        }
+
+        if (!empty($errors)) {
+            $this->render("editJobForm.view", [
+                "errors" => $errors,
+                "job" => $job
+            ]);
+        }
     }
    
 } 
