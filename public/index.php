@@ -131,3 +131,7 @@ else if ($path === "auth/logout") {
     $authController = $container->get("authController");
     $authController->logout();
 }
+else {
+     $pageController = $container->get("pageController");
+     $pageController->showErrorPage404();
+}

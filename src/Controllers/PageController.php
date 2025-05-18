@@ -20,6 +20,10 @@ class PageController extends AbstractController {
         $this->render("login.view", []);
     }
 
+    public function showErrorPage404() {
+         $this->render("errorPage404.view", []);
+    }
+
     public function showEditJobForm($jobId) {
         $job = $this->jobRepository->fetchJob($jobId);
         
