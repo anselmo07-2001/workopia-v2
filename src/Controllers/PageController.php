@@ -87,6 +87,10 @@ class PageController extends AbstractController {
             }
         }
 
+        if (!Validation::email($sanitizeFields["email"])) {
+                $errors[] = "Please enter a valid email";
+        }
+
         if (!empty($errors)) {
             $this->render("createJobForm.view", [
                 "errors" => $errors,
@@ -131,6 +135,10 @@ class PageController extends AbstractController {
             if (empty($sanitizeFields[$fields]) || !Validation::string($filteredFields[$fields])) {
                 $errors[$fields] = ucfirst($fields) . " is required";
             }
+        }
+
+        if (!Validation::email($sanitizeFields["email"])) {
+                $errors[] = "Please enter a valid email";
         }
 
         if (!empty($errors)) {
