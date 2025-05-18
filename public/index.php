@@ -130,4 +130,4 @@ else if ($path === "auth/login") {
 else if ($path === "auth/logout") {  
     $authController = $container->get("authController");
     $authController->logout();
-}  
+}

@@ -2,7 +2,7 @@
 
 <section class="container mx-auto p-4 mt-4">
   <div class="rounded-lg shadow-md bg-white p-3">
-    <?php // loadPartial('message') ?>
+    <?php require __DIR__ . "/../components/alertMessage.view.php"; ?>
     <div class="flex justify-between items-center">
       <a class="block p-4 text-blue-700" href="/Projects/Workopia/public">
         <i class="fa fa-arrow-alt-circle-left"></i>

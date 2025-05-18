@@ -88,8 +88,24 @@ class JobRepository {
         return $stmt->execute();
      }
 
-     public function editJob(int $jobId) {
-        echo "edit job" , $jobId;
+     public function editJob(array $formData) {
+         $stmt = $this->pdo->prepare("UPDATE `listings` SET `title` = :title, `description` = :description, `salary` = :salary, `requirements` = :requirements, `benefits` = :benefits, `tags` = :tags, `company` = :company, `address` = :address, `city` = :city, `state` = :state, `phone` = :phone, `email` = :email WHERE `id` = :id");
+
+          $stmt->bindValue(":id", $formData["id"]);
+          $stmt->bindValue(":title", $formData["title"]);
+          $stmt->bindValue(":description", $formData["description"]);
+          $stmt->bindValue(":salary", $formData["salary"]);
+          $stmt->bindValue(":requirements", $formData["requirements"]);
+          $stmt->bindValue(":benefits", $formData["benefits"]);
+          $stmt->bindValue(":tags", $formData["tags"]); 
+          $stmt->bindValue(":company", $formData["company"]); 
+          $stmt->bindValue(":address", $formData["address"]); 
+          $stmt->bindValue(":city", $formData["city"]); 
+          $stmt->bindValue(":state", $formData["state"]); 
+          $stmt->bindValue(":phone", $formData["phone"]); 
+          $stmt->bindValue(":email", $formData["email"]); 
+
+          return $stmt->execute();
      }
 }
 

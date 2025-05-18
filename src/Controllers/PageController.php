@@ -116,6 +116,7 @@ class PageController extends AbstractController {
 
     public function handleJobModification($jobId) {
         $job = $this->jobRepository->fetchJob($jobId);
+
         $allowedFields = ['title', 'description', 'salary', 'tags', 'company', 'address', 'city', 'state', 'phone', 'email', 'requirements', 'benefits'];
         $allowedFields = array_flip($allowedFields);
         $filteredFields  = array_intersect_key($_POST, $allowedFields); //only selected fields will be submit
@@ -137,7 +138,21 @@ class PageController extends AbstractController {
                 "errors" => $errors,
                 "job" => $job
             ]);
+            exit;
         }
+
+
+        $sanitizeFields["id"] = $job->id; 
+        $success = $this->jobRepository->editJob($sanitizeFields);
+
+        if ($success) {
+            SessionService::setAlertMessage("success_message", "Job edited successfully");
+        }
+        else {
+            SessionService::setAlertMessage("error_message", "Job edited unsuccessfully");
+        }
+
+        header("Location: index.php?path=jobs/{$job->id}");
     }
    
 } 
