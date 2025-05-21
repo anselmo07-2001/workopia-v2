@@ -1,5 +1,6 @@
 <?php
 
+use App\Support\CsrfHelper;
 use App\Support\SessionService;
 
 require "../inc/all.inc.php";
@@ -26,6 +27,12 @@ $container->bind("userRepository", function() use($container) {
 });
 
 
+//setup the csrf repository
+$container->bind("csrfHelper", function() {
+    return new App\Support\CsrfHelper();
+});
+
+
 
 
 
@@ -41,6 +48,18 @@ $container->bind("authController", function() use($container) {
     $userRepository = $container->get("userRepository");
     return new \App\Controllers\AuthController($userRepository);
 });
+
+
+$csrfHelper = $container->get("csrfHelper");
+$csrfHelper->handle();
+
+function csrf_token() {
+    global $container;
+    $csrfHelper = $container->get("csrfHelper");
+    return $csrfHelper->generateToken();
+}
+
+// var_dump("LOG: _SESSION['csrfToken']" . $_SESSION["csrftoken"] . "<br/>");    
 
 
 
