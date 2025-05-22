@@ -26,6 +26,7 @@
                     Welcome <?php echo $user["name"]; ?>
                 </div>
                 <form method="POST" action="/Projects/Workopia/public/index.php?path=auth/logout">
+                    <input type="hidden" name="_csrf" value="<?php echo e(csrf_token()); ?>"/>
                     <button type="submit" class="text-white inline hover:underline">Logout</button>
                 </form>
             </div>

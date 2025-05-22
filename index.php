@@ -3,14 +3,14 @@
 use App\Support\CsrfHelper;
 use App\Support\SessionService;
 
-require "../inc/all.inc.php";
+require "./inc/all.inc.php";
 
 $container = new \App\Support\Container();
 
 
 //setup db connection
 $container->bind("pdo", function() {
-    return require __DIR__ . "/../inc/db-connect.inc.php";
+    return require __DIR__ . "/inc/db-connect.inc.php";
 });
 
 //setup the job repository
