@@ -6,7 +6,7 @@
         Post your job listing now and find the perfect candidate.
       </p>
     </div>
-    <a href="/Workopia2/index.php?path=create" class="bg-yellow-500 hover:bg-yellow-600 text-black px-4 py-2 rounded hover:shadow-md transition duration-300">
+    <a href="/Workopia3/index.php?path=create" class="bg-yellow-500 hover:bg-yellow-600 text-black px-4 py-2 rounded hover:shadow-md transition duration-300">
       <i class="fa fa-edit"></i> Post a Job
     </a>
   </div>
