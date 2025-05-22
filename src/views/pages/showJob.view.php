@@ -4,14 +4,14 @@
   <div class="rounded-lg shadow-md bg-white p-3">
     <?php require __DIR__ . "/../components/alertMessage.view.php"; ?>
     <div class="flex justify-between items-center">
-      <a class="block p-4 text-blue-700" href="/Projects/Workopia/public">
+      <a class="block p-4 text-blue-700" href="/Workopia2/">
         <i class="fa fa-arrow-alt-circle-left"></i>
         Back To Listings
       </a>
       <?php if (\App\Support\Authorization::modifyIfOwnedByUser($job->user_id)) : ?>
        <div class="flex space-x-4 ml-4">
-          <a href="/Projects/Workopia/public/index.php?path=edit/<?php echo $job->id ?>" class="px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded">Edit</a>
-          <form method="POST" action="/Projects/Workopia/public/index.php?path=delete/<?php echo $job->id ?>" >
+          <a href="/Workopia2/index.php?path=edit/<?php echo $job->id ?>" class="px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded">Edit</a>
+          <form method="POST" action="/Workopia2/index.php?path=delete/<?php echo $job->id ?>" >
             <input type="hidden" name="_csrf" value="<?php echo e(csrf_token()); ?>"/>
             <input type="hidden" name="_method" value="DELETE">
             <button type="submit" class="px-4 py-2 bg-red-500 hover:bg-red-600 text-white rounded">Delete</button>

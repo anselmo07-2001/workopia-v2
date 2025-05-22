@@ -3,7 +3,7 @@
 <section class="flex justify-center items-center mt-20">
   <div class="bg-white p-8 rounded-lg shadow-md w-full md:w-600 mx-6">
     <h2 class="text-4xl text-center font-bold mb-4">Create Job Listing</h2>
-    <form method="POST" action="/Projects/Workopia/public/index.php?path=create">
+    <form method="POST" action="/Workopia2/index.php?path=create">
       <input type="hidden" name="_csrf" value="<?php echo e(csrf_token()); ?>"/>
 
       <h2 class="text-2xl font-bold mb-6 text-center text-gray-500">
@@ -52,7 +52,7 @@
       <button class="w-full bg-green-500 hover:bg-green-600 text-white px-4 py-2 my-3 rounded focus:outline-none">
         Save
       </button>
-      <a href="/Projects/Workopia/public/index.php" class="block text-center w-full bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded focus:outline-none">
+      <a href="/Workopia2/index.php" class="block text-center w-full bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded focus:outline-none">
         Cancel
       </a>
     </form>

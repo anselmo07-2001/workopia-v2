@@ -23,7 +23,7 @@
                         </li>
                     <?php endif; ?>
                     </ul>
-                    <a href="/Projects/Workopia/public/index.php?path=jobs/<?= $job->id?>" class="block w-full text-center px-5 py-2.5 shadow-sm rounded border text-base font-medium text-indigo-700 bg-indigo-100 hover:bg-indigo-200">
+                    <a href="/Workopia2/index.php?path=jobs/<?= $job->id?>" class="block w-full text-center px-5 py-2.5 shadow-sm rounded border text-base font-medium text-indigo-700 bg-indigo-100 hover:bg-indigo-200">
                         Details
                     </a>
                 </div>
